@@ -1,0 +1,35 @@
+main {
+    width: 90%;
+    max-width: 90rem;
+    margin: auto auto;
+    display: flex;
+    gap: 2rem;
+    flex: 1;
+  }
+  #menuBar {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 10rem;
+    overflow: no;
+  }
+
+  #fallback {
+    font-weight: bold;
+    font-size: 1.15rem;
+    margin: 0;
+    text-align: center;
+  }
+  
+  @media (min-width: 768px) {
+    main {
+      margin: auto auto;
+      grid-template-columns: 0.5fr 3fr;
+      display: grid;
+    }
+  
+    #fallback {
+      font-size: 1.5rem;
+      text-align: left;
+    }
+  }

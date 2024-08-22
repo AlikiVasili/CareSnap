@@ -1,0 +1,22 @@
+  button {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+    padding: 1rem 1rem;
+    background-color: #35c2d7;
+    color: #000000;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    width: 100%;
+    min-width: 12rem;
+  }
+  
+  button:hover,
+  button:active,
+  .active {
+    background-color: #3cebfa;
+    color: #000000;
+  }
+
+  
