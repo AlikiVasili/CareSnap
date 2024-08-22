@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # CareSnapProject
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.4.
@@ -25,3 +26,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+=======
+# CareSnap
+An AI assistant that guide the user through the NCPeH project and answer questions related to it. Also it includes an option to login and access your Patient Summary. The AI assistant then can answer questions related to your personal medical information available on your PS and e-Prescription
+>>>>>>> e47cd48a83aea4609aef3b5b224a91e54a6309e2
