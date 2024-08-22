@@ -1,35 +1,31 @@
 main {
-    width: 90%;
-    max-width: 90rem;
-    margin: auto auto;
-    display: flex;
-    gap: 2rem;
-    flex: 1;
-  }
-  #menuBar {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 10rem;
-    overflow: no;
+  display: grid;
+  grid-template-columns: 1fr; /* Single column layout by default */
+  gap: 1rem;
+  width: 100%;
+  max-width: 90rem;
+  margin: auto;
+}
+
+#menuBar {
+  display: flex;
+  flex-direction: column; /* Stack menu items vertically */
+  list-style: none;
+  padding: 0;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  main {
+      grid-template-columns: 20% 1fr; /* 20% for menu bar, 80% for content */
   }
 
-  #fallback {
-    font-weight: bold;
-    font-size: 1.15rem;
-    margin: 0;
-    text-align: center;
+  #menuBar {
+      grid-column: 1; /* Menu bar in the first column */
   }
-  
-  @media (min-width: 768px) {
-    main {
-      margin: auto auto;
-      grid-template-columns: 0.5fr 3fr;
-      display: grid;
-    }
-  
-    #fallback {
-      font-size: 1.5rem;
-      text-align: left;
-    }
+
+  .content-area {
+    margin: 1rem;
+    grid-column: 2; /* Content in the second column */
   }
+}

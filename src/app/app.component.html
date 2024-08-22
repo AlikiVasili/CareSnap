@@ -1,27 +1,32 @@
 <app-header></app-header>
 
 <main>
-    <ul id="menuBar">
-        @for (menuItem of menuItems; track menuItem.id){
-            <li style="margin-bottom: 10px;">
-                <app-menu-item
-                    [menuItem] = "menuItem"
-                    [selected]="menuItem.id === selectedMenuItemId"
-                    (select)="onSelectedMenuItem($event)" 
-                />
-            </li>
+    <nav id="menuBar">
+        <ul id="menuBar">
+            @for (menuItem of menuItems; track menuItem.id){
+                <li style="margin-bottom: 10px;">
+                    <app-menu-item
+                        [menuItem] = "menuItem"
+                        [selected]="menuItem.id === selectedMenuItemId"
+                        (select)="onSelectedMenuItem($event)" 
+                    />
+                </li>
+            }
+        </ul>
+    </nav>
+    <section class="content-area">
+        <!-- Dynamic content here based on selectedMenuItemId -->
+        @if(selectedMenuItemId === "i1"){
+            <app-about-section></app-about-section>
         }
-    </ul>
-    @if(selectedMenuItemId === "i1"){
-        <app-about-section></app-about-section>
-    }
-    @else if(selectedMenuItemId === "i2"){
-        <app-patient-summary-section></app-patient-summary-section>
-    }
-    @else if(selectedMenuItemId === "i3"){
-        <app-ncpeh-section></app-ncpeh-section>
-    }
-    @else if(selectedMenuItemId === "i4"){
-        <app-test-user-section></app-test-user-section>
-    }
+        @else if(selectedMenuItemId === "i2"){
+            <app-patient-summary-section></app-patient-summary-section>
+        }
+        @else if(selectedMenuItemId === "i3"){
+            <app-ncpeh-section></app-ncpeh-section>
+        }
+        @else if(selectedMenuItemId === "i4"){
+            <app-test-user-section></app-test-user-section>
+        }
+    </section>
 </main>
