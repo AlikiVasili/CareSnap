@@ -6,12 +6,13 @@ import { MenuItemComponent } from "./menu-item/menu-item.component";
 import { PatientSummarySectionComponent } from "./patient-summary-section/patient-summary-section.component";
 import { NcpehSectionComponent } from "./ncpeh-section/ncpeh-section.component";
 import { TestUserSectionComponent } from "./test-user-section/test-user-section.component";
+import { ChatbotComponent } from "./chatbot/chatbot.component";
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, AboutSectionComponent, MenuItemComponent, PatientSummarySectionComponent, NcpehSectionComponent, TestUserSectionComponent],
+  imports: [HeaderComponent, AboutSectionComponent, MenuItemComponent, PatientSummarySectionComponent, NcpehSectionComponent, TestUserSectionComponent, ChatbotComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

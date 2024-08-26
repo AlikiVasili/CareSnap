@@ -14,5 +14,9 @@ export const MENU_ITEMS_LIST = [
 {
     id: "i4",
     text: "TestUser"
+},
+{
+    id: "i5",
+    text: "CareSnap"
 }
 ];
