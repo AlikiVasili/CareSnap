@@ -1,18 +1,15 @@
 import { Injectable } from "@angular/core";
-
-export interface NewMessageData{
-    text: string,
-    who: string
-}
+import { NewMessageData } from "./message.model";
 
 @Injectable({
     providedIn: 'root'
 })
-export class MessagesService{
+export class MessagesService {
     private messages = [
         {
-          text: 'Welcome! I am CareSnap!',
-          who:'chatbot'
+          id: '0',
+          text: "Welcome I am CareSnap! How can I assist you today?",
+          isUser: false
         }
     ];
 
@@ -24,15 +21,20 @@ export class MessagesService{
       }
     }
 
-    addTask(messageData: NewMessageData){
-      this.messages.unshift({
-          text: messageData.text,
-          who: messageData.who
-        });
-        this.saveChat();
+    getMessages(){
+        return this.messages;
     }
 
-    private saveChat(){
-      localStorage.setItem('messages', JSON.stringify(this.messages));
+    addMessage(messageData: NewMessageData){
+      this.messages.push({
+          id: new Date().getTime().toString(),
+          text: messageData.text,
+          isUser: messageData.isUser
+        });
+        this.saveMessages();
+    }
+
+    private saveMessages(){
+      localStorage.setItem('tasks', JSON.stringify(this.messages));
     }
 }

@@ -22,6 +22,7 @@ h1{
     flex: 1;
     padding: 20px;
     overflow-y: auto;
+    border-bottom: 1px solid #ccc;
 }
 
 .chat-footer {
@@ -50,4 +51,8 @@ h1{
 
 .chat-footer button:hover {
     background-color: #0056b3;
+}
+
+ul{
+    list-style-type: none;
 }
