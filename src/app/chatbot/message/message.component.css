@@ -1,6 +1,6 @@
 .message {
     margin-bottom: 15px;
-    max-width: 60%; /* Adjust this value to control the width of the messages */
+    max-width: 60%;     
     padding: 10px;
     border-radius: 10px;
     clear: both;

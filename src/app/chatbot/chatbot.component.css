@@ -11,13 +11,6 @@ h1{
     overflow: hidden;
 }
 
-.chat-header {
-    background-color: #007bff;
-    padding: 20px;
-    color: white;
-    text-align: center;
-}
-
 .chat-body {
     flex: 1;
     padding: 20px;
@@ -54,5 +47,6 @@ h1{
 }
 
 ul{
+    padding: 10px 10px;
     list-style-type: none;
 }
