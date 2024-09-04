@@ -50,7 +50,7 @@ export class ChatbotComponent {
       this.scrollToBottom();
     }
 
-    //Answer back to the user
+    // Answer back to the user
     const chatbotAnswer: NewMessageData = {
       text: "Answer",
       isUser: false,
@@ -58,7 +58,6 @@ export class ChatbotComponent {
     this.messageService.addMessage(chatbotAnswer);
   }
 
-  // Function to detect Enter key press
   onEnterPress(event: KeyboardEvent) {
     if (event.key === 'Enter') {
       this.onSendingMessage();
