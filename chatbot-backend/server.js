@@ -11,10 +11,10 @@ app.post('/chat', (req, res) => {
         const userMessage = req.body.message;
         let responseMessage;
 
-        if (userMessage.toLowerCase() === 'hello') {
-            responseMessage = 'hello';
+        if (userMessage.toLowerCase().includes('hello') || userMessage.toLowerCase().includes('hi')) {
+            responseMessage = 'Hello there!';
         } else {
-            responseMessage = 'Answer';
+            responseMessage = 'I am still under development I cannot give you an answer right now! Stay tuned!';
         }
 
         res.json({ response: responseMessage });
