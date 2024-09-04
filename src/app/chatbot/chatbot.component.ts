@@ -99,8 +99,11 @@ export class ChatbotComponent {
   onLogin(userId: string) {
     this.isLoggedIn = true;
     this.showLoginForm = false;
-    console.log('User logged in with ID:', userId);
-    // Handle the login logic here, e.g., save the userId or call an API
+    const loginMessage: NewMessageData = {
+      text: 'You just LogIn as Maria Iosif!',
+      isUser: false,
+    };
+    this.messageService.addMessage(loginMessage);
   }
 
   onCancelLogin() {
