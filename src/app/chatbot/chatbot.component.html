@@ -1,7 +1,7 @@
 <app-card>
     <h1>CareSnap</h1>
     <div class="chat-container">
-      <section class="chat-body">
+      <section class="chat-body" #chatBody>
         <ul>
             @for (message of chatbotBodyMessages; track message.id){
                 <li>

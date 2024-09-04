@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CardComponent } from '../shared/card/card.component';
@@ -16,6 +16,22 @@ import { NewMessageData } from './message.model';
 export class ChatbotComponent {
   userInput: string = '';
   constructor(private messageService: MessagesService){}
+  @ViewChild('chatBody') private chatBody!: ElementRef;
+  chatbotMessages: Array<any> = [];
+
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom(): void {
+    if (this.chatBody) {
+      try {
+        this.chatBody.nativeElement.scrollTop = this.chatBody.nativeElement.scrollHeight;
+      } catch (err) {
+        console.error('Failed to scroll', err);
+      }
+    }
+  }
 
   get chatbotBodyMessages(){
     return this.messageService.getMessages();
@@ -29,6 +45,9 @@ export class ChatbotComponent {
       };
       this.messageService.addMessage(newMessage);
       this.userInput = '';
+
+      // Scroll to the bottom after the message is added
+      this.scrollToBottom();
     }
 
     //Answer back to the user
