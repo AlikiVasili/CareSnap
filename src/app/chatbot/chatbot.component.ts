@@ -1,4 +1,3 @@
-import { HttpClientModule } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -7,11 +6,12 @@ import { MessagesService } from './messages.services';
 import { MessageComponent } from './message/message.component';
 import { NewMessageData } from './message.model';
 import { ChatbotService } from '../chatbot.service';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 @Component({
   selector: 'app-chatbot',
   standalone: true,
-  imports: [CardComponent, CommonModule, FormsModule, MessageComponent, HttpClientModule],
+  imports: [LoginFormComponent,CardComponent, CommonModule, FormsModule, MessageComponent],
   templateUrl: './chatbot.component.html',
   styleUrls: ['./chatbot.component.css']
 })
@@ -19,6 +19,8 @@ export class ChatbotComponent {
   userInput: string = '';
   @ViewChild('chatBody') private chatBody!: ElementRef;
   chatbotMessages: Array<any> = [];
+  isLoggedIn: boolean = false; // Track login state
+  showLoginForm: boolean = false;
 
   constructor(
     private messageService: MessagesService,
@@ -52,26 +54,35 @@ export class ChatbotComponent {
       this.messageService.addMessage(newMessage);
 
       // Call the backend service
-      this.chatbotService.sendMessage(this.userInput).subscribe({
-        next: (response) => {
-          // Add the response message from the backend
-          const chatbotAnswer: NewMessageData = {
-            text: response.response,
-            isUser: false,
-          };
-          this.messageService.addMessage(chatbotAnswer);
-          this.userInput = '';
-          this.scrollToBottom();
-        },
-        error: (error) => {
-          console.error('Error:', error);
-          const errorMessage: NewMessageData = {
-            text: 'Sorry, there was an error. Please try again later.',
-            isUser: false,
-          };
-          this.messageService.addMessage(errorMessage);
-        }
-      });
+      if(this.isLoggedIn){
+        this.chatbotService.sendMessage(this.userInput).subscribe({
+          next: (response) => {
+            // Add the response message from the backend
+            const chatbotAnswer: NewMessageData = {
+              text: response.response,
+              isUser: false,
+            };
+            this.messageService.addMessage(chatbotAnswer);
+            this.userInput = '';
+            this.scrollToBottom();
+          },
+          error: (error) => {
+            console.error('Error:', error);
+            const errorMessage: NewMessageData = {
+              text: 'Sorry, there was an error. Please try again later.',
+              isUser: false,
+            };
+            this.messageService.addMessage(errorMessage);
+          }
+        });
+      }
+      else{
+        const errorMessage: NewMessageData = {
+          text: 'LogIn First',
+          isUser: false,
+        };
+        this.messageService.addMessage(errorMessage);
+      }
     }
   }
 
@@ -79,5 +90,20 @@ export class ChatbotComponent {
     if (event.key === 'Enter') {
       this.onSendingMessage();
     }
+  }
+
+  onLoginButtonClick() {
+    this.showLoginForm = true; // Show the login form when the login button is clicked
+  }
+
+  onLogin(userId: string) {
+    this.isLoggedIn = true;
+    this.showLoginForm = false;
+    console.log('User logged in with ID:', userId);
+    // Handle the login logic here, e.g., save the userId or call an API
+  }
+
+  onCancelLogin() {
+    this.showLoginForm = false; // Hide the login form when the user cancels
   }
 }

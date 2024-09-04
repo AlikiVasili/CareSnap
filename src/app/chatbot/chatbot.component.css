@@ -1,6 +1,8 @@
 h1{
+    display: inline;
     margin: 2rem;
 }
+
 .chat-container {
     margin: 2rem;
     background-color: white;
@@ -51,3 +53,22 @@ ul{
     padding: 10px 10px;
     list-style-type: none;
 }
+
+.loginButton {
+    margin-left: 1rem;
+    display: inline; /* Ensure the button is inline with the h1 */
+    color: black; /* Text color for the button */
+    border: none; /* Remove default border */
+    padding: 10px 20px; /* Adjust padding for button size */
+    border-radius: 5px; /* Rounded corners for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1.2rem; /* Increase font size */
+    background: none; /* Remove background color */
+    /* Ensure proper alignment */
+    text-align: center; /* Center text within the button */
+  }
+  
+  .loginButton:hover {
+    background-color: #0056b3;
+    color: white;
+  }
