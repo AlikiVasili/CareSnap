@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -5,19 +6,24 @@ import { CardComponent } from '../shared/card/card.component';
 import { MessagesService } from './messages.services';
 import { MessageComponent } from './message/message.component';
 import { NewMessageData } from './message.model';
+import { ChatbotService } from '../chatbot.service';
 
 @Component({
   selector: 'app-chatbot',
   standalone: true,
-  imports: [CardComponent, CommonModule, FormsModule, MessageComponent],
+  imports: [CardComponent, CommonModule, FormsModule, MessageComponent, HttpClientModule],
   templateUrl: './chatbot.component.html',
   styleUrls: ['./chatbot.component.css']
 })
 export class ChatbotComponent {
   userInput: string = '';
-  constructor(private messageService: MessagesService){}
   @ViewChild('chatBody') private chatBody!: ElementRef;
   chatbotMessages: Array<any> = [];
+
+  constructor(
+    private messageService: MessagesService,
+    private chatbotService: ChatbotService // Inject the ChatbotService
+  ) {}
 
   ngAfterViewChecked() {
     this.scrollToBottom();
@@ -33,29 +39,40 @@ export class ChatbotComponent {
     }
   }
 
-  get chatbotBodyMessages(){
+  get chatbotBodyMessages() {
     return this.messageService.getMessages();
   }
 
-  onSendingMessage  (){
+  onSendingMessage() {
     if (this.userInput.trim()) {
       const newMessage: NewMessageData = {
         text: this.userInput,
         isUser: true,
       };
       this.messageService.addMessage(newMessage);
-      this.userInput = '';
 
-      // Scroll to the bottom after the message is added
-      this.scrollToBottom();
+      // Call the backend service
+      this.chatbotService.sendMessage(this.userInput).subscribe({
+        next: (response) => {
+          // Add the response message from the backend
+          const chatbotAnswer: NewMessageData = {
+            text: response.response,
+            isUser: false,
+          };
+          this.messageService.addMessage(chatbotAnswer);
+          this.userInput = '';
+          this.scrollToBottom();
+        },
+        error: (error) => {
+          console.error('Error:', error);
+          const errorMessage: NewMessageData = {
+            text: 'Sorry, there was an error. Please try again later.',
+            isUser: false,
+          };
+          this.messageService.addMessage(errorMessage);
+        }
+      });
     }
-
-    // Answer back to the user
-    const chatbotAnswer: NewMessageData = {
-      text: "Answer",
-      isUser: false,
-    };
-    this.messageService.addMessage(chatbotAnswer);
   }
 
   onEnterPress(event: KeyboardEvent) {
@@ -63,5 +80,4 @@ export class ChatbotComponent {
       this.onSendingMessage();
     }
   }
-
 }
