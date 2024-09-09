@@ -93,7 +93,18 @@ export class ChatbotComponent {
   }
 
   onLoginButtonClick() {
-    this.showLoginForm = true; // Show the login form when the login button is clicked
+    if(!this.isLoggedIn){
+      this.showLoginForm = true; // Show the login form when the login button is clicked
+    }
+  }
+
+  onLogoutButtonClick(){
+    this.isLoggedIn = false;
+    const logoutMessage: NewMessageData = {
+      text: 'You logged out!',
+      isUser: false,
+    };
+    this.messageService.addMessage(logoutMessage);
   }
 
   onLogin(userId: string) {

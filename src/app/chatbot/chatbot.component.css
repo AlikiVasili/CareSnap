@@ -1,6 +1,13 @@
-h1{
-    display: inline;
+/* Container for the header to align h1 and the login button */
+.header-container {
+    display: flex;
+    justify-content: space-between; /* Pushes h1 to the left and button to the right */
+    align-items: center; /* Vertically aligns h1 and button */
     margin: 2rem;
+}
+
+h1{
+    margin: 0;
 }
 
 .chat-container {
@@ -54,19 +61,19 @@ ul{
     list-style-type: none;
 }
 
+/* Styling for the login button */
 .loginButton {
-    margin-left: 1rem;
-    display: inline; /* Ensure the button is inline with the h1 */
-    color: black; /* Text color for the button */
-    border: none; /* Remove default border */
-    padding: 10px 20px; /* Adjust padding for button size */
-    border-radius: 5px; /* Rounded corners for the button */
-    cursor: pointer; /* Pointer cursor on hover */
-    font-size: 1.2rem; /* Increase font size */
-    background: none; /* Remove background color */
-    /* Ensure proper alignment */
-    text-align: center; /* Center text within the button */
-  }
+    display: flex;
+    align-items: center; 
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    background: none;
+    transition: background-color 0.3s, color 0.3s;
+}
   
   .loginButton:hover {
     background-color: #0056b3;
