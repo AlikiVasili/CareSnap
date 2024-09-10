@@ -14,6 +14,12 @@ export class LoginFormComponent {
   @Output() login = new EventEmitter<string>();
   @Output() cancel = new EventEmitter<void>();
 
+  onEnterPress(event: KeyboardEvent){
+    if (event.key === 'Enter') {
+      this.onLogin();
+    }
+  }
+
   onLogin() {
     if (this.userId.trim()) {
       this.login.emit(this.userId); // Emit the user ID on login
