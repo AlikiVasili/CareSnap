@@ -78,12 +78,13 @@ export class ChatbotComponent {
       }
       else{
         const errorMessage: NewMessageData = {
-          text: 'LogIn First',
+          text: 'Wiki Chatbot - Log in to access PS chatbot',
           isUser: false,
         };
         this.messageService.addMessage(errorMessage);
       }
     }
+    this.userInput = '';
   }
 
   onEnterPress(event: KeyboardEvent) {
