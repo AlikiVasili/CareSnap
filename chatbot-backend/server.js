@@ -28,10 +28,6 @@ app.post('/chat', async (req, res) => {
         intents.forEach(intent => {
             if (intent === 'hello') {
                 responseMessage += "Hello! How can I assist you today?\n";
-            } else if (intent === 'allergies') {
-                responseMessage += "I can help you check allergies. Please provide more details if necessary.\n";
-            } else if (intent === 'surgery') {
-                responseMessage += "Let's discuss your surgery history. Do you need assistance with recent surgeries?\n";
             } else {
                 responseMessage += `Processing your request related to ${intent}.\n`;
             }
