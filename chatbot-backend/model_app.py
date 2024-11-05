@@ -1,11 +1,8 @@
-from flask import Flask, request, jsonify, render_template, send_file, send_from_directory
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 from transformers import AutoTokenizer
-import subprocess
 import torch
 import os
-import json
-from datetime import datetime
 from RoBERTa_finetune_multi_label import RoBERTaClassifier  # Import your model definition
 
 app = Flask(__name__)

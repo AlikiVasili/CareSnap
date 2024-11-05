@@ -79,3 +79,11 @@ ul{
     background-color: #0056b3;
     color: white;
   }
+
+  .loading-indicator {
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    margin: 10px 0;
+  }
+  

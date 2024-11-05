@@ -20,6 +20,7 @@ export class ChatbotComponent {
   @ViewChild('chatBody') private chatBody!: ElementRef;
   chatbotMessages: Array<any> = [];
   isLoggedIn: boolean = false; // Track login state
+  isLoading: boolean = false; // New property to manage loading state
   showLoginForm: boolean = false;
 
   constructor(
@@ -53,13 +54,19 @@ export class ChatbotComponent {
       };
       this.messageService.addMessage(newMessage);
 
+      // Show loading indicator
+      this.isLoading = true;
+
       // Call the backend service
       if(this.isLoggedIn){
         this.chatbotService.sendMessage(this.userInput).subscribe({
           next: (response) => {
+            // Hide loading indicator
+            this.isLoading = false;
+
             // Add the response message from the backend
             const chatbotAnswer: NewMessageData = {
-              text: response.response,
+              text: response.combinedResponse,
               isUser: false,
             };
             this.messageService.addMessage(chatbotAnswer);
@@ -67,13 +74,13 @@ export class ChatbotComponent {
             this.scrollToBottom();
           },
           error: (error) => {
-            console.error('Error:', error);
+            console.error('Full error response:', error); // Log the complete error object
             const errorMessage: NewMessageData = {
-              text: 'Sorry, there was an error. Please try again later.',
-              isUser: false,
+                text: 'Sorry, there was an error. Please try again later.',
+                isUser: false,
             };
             this.messageService.addMessage(errorMessage);
-          }
+              }
         });
       }
       else{
