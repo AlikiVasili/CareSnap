@@ -23,8 +23,8 @@ tokenizer = AutoTokenizer.from_pretrained('roberta-base')
 class_to_intent = {
     0: 'allergies', 1: 'current_problems', 2: 'exit', 3: 'feeling',
     4: 'hello', 5: 'illness_history', 6: 'implants', 7: 'info', 8: 'intolerances',
-    9: 'other', 10: 'prescription', 11: 'surgery', 12: 'vaccination',
-    13: 'placeholder_1', 14: 'placeholder_2'
+    9: 'other', 10: 'prescription', 11: 'surgery', 12: 'placeholder_1',
+    13: 'vaccination', 14: 'placeholder_2'
 }
 
 
