@@ -1,31 +1,36 @@
-main {
-  display: grid;
-  grid-template-columns: 1fr; /* Single column layout by default */
-  gap: 1rem;
-  width: 100%;
-  max-width: 90rem;
-  margin: auto;
+.container {
+  flex-grow: 1;
+  padding: 20px;
 }
 
-#menuBar {
+.nav-bar {
+  padding: 10px 0;
   display: flex;
-  flex-direction: column; /* Stack menu items vertically */
-  list-style: none;
-  padding: 0;
-  gap: 1rem;
+  gap: 15px;
+  margin-left: 20px;
 }
 
-@media (min-width: 768px) {
-  main {
-      grid-template-columns: 20% 1fr; /* 20% for menu bar, 80% for content */
-  }
+.nav-button {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 1em;
+  cursor: pointer;
+  padding: 10px;
+}
 
-  #menuBar {
-      grid-column: 1; /* Menu bar in the first column */
-  }
+.nav-button:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
 
-  .content-area {
-    margin: 1rem;
-    grid-column: 2; /* Content in the second column */
-  }
+.nav-button:focus {
+  outline: none;
+  color: #004080;
+}
+
+/* Style for the active button */
+.nav-button.active {
+  font-weight: bold;
+  color: #004080; /* A deeper blue to indicate active */
 }

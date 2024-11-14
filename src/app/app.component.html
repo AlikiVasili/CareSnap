@@ -1,35 +1,35 @@
 <app-header></app-header>
-
-<main>
-    <nav id="menuBar">
-        <ul id="menuBar">
-            @for (menuItem of menuItems; track menuItem.id){
-                <li style="margin-bottom: 10px;">
-                    <app-menu-item
-                        [menuItem] = "menuItem"
-                        [selected]="menuItem.id === selectedMenuItemId"
-                        (select)="onSelectedMenuItem($event)" 
-                    />
-                </li>
-            }
-        </ul>
+<div class="main-content">
+    <nav class="nav-bar">s
+        <button class="nav-button" [ngClass]="{ 'active': selectedMenuItemId === 'i1' }"
+            (click)="onSelectedMenuItem('i1')">About</button>
+        <button class="nav-button" [ngClass]="{ 'active': selectedMenuItemId === 'i2' }"
+            (click)="onSelectedMenuItem('i2')">Patient Summary</button>
+        <button class="nav-button" [ngClass]="{ 'active': selectedMenuItemId === 'i3' }"
+            (click)="onSelectedMenuItem('i3')">NCPeH Wiki</button>
+        <button class="nav-button" [ngClass]="{ 'active': selectedMenuItemId === 'i4' }"
+            (click)="onSelectedMenuItem('i4')">Test User</button>
+        <button class="nav-button" [ngClass]="{ 'active': selectedMenuItemId === 'i5' }"
+            (click)="onSelectedMenuItem('i5')">CareSnap</button>
     </nav>
-    <section class="content-area">
+
+    <section class="container">
         <!-- Dynamic content here based on selectedMenuItemId -->
         @if(selectedMenuItemId === "i1"){
-            <app-about-section></app-about-section>
+        <app-about-section></app-about-section>
         }
         @else if(selectedMenuItemId === "i2"){
-            <app-patient-summary-section></app-patient-summary-section>
+        <app-patient-summary-section></app-patient-summary-section>
         }
         @else if(selectedMenuItemId === "i3"){
-            <app-ncpeh-section></app-ncpeh-section>
+        <app-ncpeh-section></app-ncpeh-section>
         }
         @else if(selectedMenuItemId === "i4"){
-            <app-test-user-section></app-test-user-section>
+        <app-test-user-section></app-test-user-section>
         }
         @else if(selectedMenuItemId === "i5"){
-            <app-chatbot></app-chatbot>
+        <app-chatbot></app-chatbot>
         }
     </section>
-</main>
+</div>
+<app-footer></app-footer>
