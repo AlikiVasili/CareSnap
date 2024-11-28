@@ -403,6 +403,90 @@ function findAllergyCategory(userInput, categoryKeywords) {
     return null; // No specific category found
 }
 
+const xlsx = require('xlsx'); // For handling Excel files
+const path = require('path');
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// Path to your Excel file
+const EXCEL_FILE_PATH = path.join(__dirname, 'testing_round2.xlsx');
+const le = require('fast-levenshtein'); // Levenshtein distance
+
+// Function to load and filter dataset
+function loadDataset() {
+    try {
+        // Load the Excel file
+        const workbook = xlsx.readFile(EXCEL_FILE_PATH);
+        const sheetName = workbook.SheetNames[0]; // Assuming data is in the first sheet
+        const sheet = workbook.Sheets[sheetName];
+        const data = xlsx.utils.sheet_to_json(sheet); // Convert to JSON format
+
+        // Validate required columns
+        const requiredColumns = ['Question', 'Answer (512 tokens)', 'Label'];
+        if (!requiredColumns.every(col => col in data[0])) {
+            throw new Error(`Excel file must contain the columns: ${requiredColumns.join(', ')}`);
+        }
+
+        // Filter rows where Label is "Correct"
+        const filteredData = data.filter(row => row.Label && row.Label.toLowerCase() === 'correct');
+
+        if (!filteredData.length) {
+            throw new Error("No valid rows found with 'Correct' label.");
+        }
+
+        return filteredData;
+    } catch (error) {
+        console.error('Error loading dataset:', error.message);
+        throw error;
+    }
+}
+
+// Function to find the most similar question using Levenshtein distance
+function getMostRelevantAnswer(data, userMessage) {
+    try {
+        let minDistance = Infinity;
+        let bestMatch = null;
+
+        // Loop through the dataset and calculate the Levenshtein distance
+        for (const row of data) {
+            const question = row['Question'];
+            const distance = le.get(userMessage.toLowerCase(), question.toLowerCase());
+
+            // If the current question is a better match, update the best match
+            if (distance < minDistance) {
+                minDistance = distance;
+                bestMatch = row;
+            }
+        }
+
+        // Return the answer for the most relevant question
+        return bestMatch ? bestMatch['Answer (512 tokens)'] : "Sorry, I couldn't find a relevant answer.";
+    } catch (error) {
+        console.error('Error matching question:', error.message);
+        return "Sorry, I couldn't process your question.";
+    }
+}
+
+// New endpoint for non-logged-in users (Llama Prototype)
+app.post('/wikiChat', async (req, res) => {
+    try {
+        const userMessage = req.body.message;
+
+        // Load the dataset
+        const dataset = loadDataset();
+
+        // Find the most relevant answer based on Levenshtein distance
+        const answer = getMostRelevantAnswer(dataset, userMessage);
+
+        // Return the response
+        res.json({ answer });
+    } catch (error) {
+        res.status(500).json({ error: error.message || 'An error occurred while processing your request.' });
+    }
+});
+
 // Start Express server
 app.listen(port, () => {
     console.log(`Express server running at http://localhost:${port}`);

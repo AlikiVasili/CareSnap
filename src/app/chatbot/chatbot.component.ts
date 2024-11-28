@@ -7,6 +7,7 @@ import { MessageComponent } from './message/message.component';
 import { NewMessageData } from './message.model';
 import { ChatbotService } from '../chatbot.service';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-chatbot',
@@ -83,12 +84,30 @@ export class ChatbotComponent {
               }
         });
       }
-      else{
-        const errorMessage: NewMessageData = {
-          text: 'Wiki Chatbot - Log in to access PS chatbot',
-          isUser: false,
-        };
-        this.messageService.addMessage(errorMessage);
+      else {
+        // Non-logged-in user: Call /wikiChat
+        this.chatbotService.sendWikiMessage(this.userInput).subscribe({
+          next: (response) => {
+            this.isLoading = false;
+  
+            // Add the response from the Llama chatbot
+            const llamaResponse: NewMessageData = {
+              text: response.answer,
+              isUser: false,
+            };
+            this.messageService.addMessage(llamaResponse);
+            this.userInput = '';
+            this.scrollToBottom();
+          },
+          error: (error) => {
+            console.error('Llama chatbot error:', error);
+            const errorMessage: NewMessageData = {
+              text: 'Sorry, there was an error with the Llama chatbot. Please try again later.',
+              isUser: false,
+            };
+            this.messageService.addMessage(errorMessage);
+          }
+        });
       }
     }
     this.userInput = '';
@@ -128,4 +147,5 @@ export class ChatbotComponent {
   onCancelLogin() {
     this.showLoginForm = false; // Hide the login form when the user cancels
   }
+  
 }
