@@ -474,14 +474,19 @@ app.post('/wikiChat', async (req, res) => {
     try {
         const userMessage = req.body.message;
 
-        // Load the dataset
-        const dataset = loadDataset();
+        if((userMessage.toLowerCase()).includes('hi') || (userMessage.toLowerCase()).includes('hello')){
+            const answer = 'Hello'
+            res.json({ answer });
+        }else{
+            // Load the dataset
+            const dataset = loadDataset();
 
-        // Find the most relevant answer based on Levenshtein distance
-        const answer = getMostRelevantAnswer(dataset, userMessage);
+            // Find the most relevant answer based on Levenshtein distance
+            const answer = getMostRelevantAnswer(dataset, userMessage);
 
-        // Return the response
-        res.json({ answer });
+            // Return the response
+            res.json({ answer });
+        }
     } catch (error) {
         res.status(500).json({ error: error.message || 'An error occurred while processing your request.' });
     }

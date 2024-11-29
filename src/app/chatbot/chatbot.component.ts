@@ -58,7 +58,7 @@ export class ChatbotComponent {
       // Show loading indicator
       this.isLoading = true;
 
-      // Call the backend service
+      // Call the PS backend service
       if(this.isLoggedIn){
         this.chatbotService.sendMessage(this.userInput).subscribe({
           next: (response) => {
