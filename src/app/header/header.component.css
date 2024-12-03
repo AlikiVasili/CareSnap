@@ -1,18 +1,19 @@
-header {
-  display: flex;
-  height: 150px;
-  width: 100%;
-  margin: auto auto;
-  background-color: #d7ebf4;
-  padding: 1rem;
-  border-bottom: 1px solid #d7ebf4;
-  }
-
-  .header-content {
+  .header-content{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
+    background-color: #f0f0f0;
+    width: 100%;
+    padding: 20px 0;
+    box-sizing: border-box;
+  }
+
+  .logos {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .logo{
+    height: 60px;
   }
 
   .title-section {
@@ -20,14 +21,13 @@ header {
   }
 
   .title-section h1 {
-    margin: 0;
-    font-size: 1.5em;
+    margin: 15px;
     color: #333;
     font-size: 2.5rem;
   }
 
   .title-section p {
-    margin: 0;
+    margin: 15px;
     font-size: 0.9em;
     color: #666;
     font-size: 1.2rem;
@@ -35,7 +35,74 @@ header {
   }
   
   .CareSnapIcon {
+    margin: 15px;
     width: 6rem;
-    object-fit: contain;
+  }
+
+  @media screen and (max-width: 921px){
+    .header-content{
+      display: grid;
+      justify-content: center;
+      justify-items: center;
+    }
+
+    .logos {
+      display: flex;
+      justify-content: flex-end;
+    }
+  
+    .logo{
+      height: 40px;
+    }
+
+    .CareSnapIcon{
+      width: 5rem
+    }
+
+    .title-section{
+      justify-items: center;
+    }
+
+    .title-section h1{
+      font-size: 1.5rem;
+    }
+
+    .title-section p{
+      font-size: 0.9rem;
+    }
+  }
+
+  @media screen and (max-width: 452px){
+    .header-content{
+      display: grid;
+      width: 450px;
+      justify-content: center;
+      justify-items: center;
+    }
+
+    .logos {
+      display: flex;
+      justify-content: center;
+    }
+  
+    .logo{
+      height: 30px;
+    }
+
+    .CareSnapIcon{
+      width: 5rem
+    }
+
+    .title-section{
+      justify-items: center;
+    }
+
+    .title-section h1{
+      font-size: 1.5rem;
+    }
+
+    .title-section p{
+      font-size: 0.9rem;
+    }
   }
   
