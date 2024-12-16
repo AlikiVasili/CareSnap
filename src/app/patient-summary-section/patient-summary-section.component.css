@@ -2,6 +2,11 @@ h2,p{
     margin: 2rem;
 }
 
+
+h2{
+    color: #326fa3;
+}
+
 .image_container{
     display: grid;
     grid-template-columns: repeat(2, 1fr);

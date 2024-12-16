@@ -1,3 +1,7 @@
 h2,h3,p{
     margin: 2rem;
 }
+
+h2,h3{
+    color: #326fa3;
+}

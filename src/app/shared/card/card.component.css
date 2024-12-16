@@ -1,8 +1,10 @@
 div {
-    background-color: #F3FBFF;
-    border-radius: 8px;
+    background-color: #fff;
+    border-radius: 2px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none; /* Remove all borders */
+    border-top: 2px solid #c1c1c1; /* Add only the bottom border */
+    border-bottom: 2px solid #c1c1c1; /* Add only the bottom border */
 }
 
 @media screen and (max-width: 425px){

@@ -16,7 +16,8 @@
 
 .nav-button:hover {
   text-decoration: underline;
-  color: #0056b3;
+  color: #004080;
+  font-weight: bold;
 }
 
 .nav-button:focus {
