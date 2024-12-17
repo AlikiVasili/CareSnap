@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: caresnap-deployment
+  namespace: caresnap-namespace  # Specify the namespace here
   labels:
     app: caresnap
 spec:
@@ -25,6 +26,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: caresnap-service
+  namespace: caresnap-namespace  # Specify the namespace here
 spec:
   selector:
     app: caresnap
@@ -33,4 +35,3 @@ spec:
       port: 80
       targetPort: 80
   type: LoadBalancer
-Th
