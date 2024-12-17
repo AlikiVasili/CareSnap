@@ -1,8 +1,14 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: caresnap
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: caresnap-deployment
-  namespace: caresnap  # Make sure this matches the correct namespace
+  namespace: caresnap
   labels:
     app: caresnap
 spec:
@@ -21,13 +27,12 @@ spec:
         ports:
         - containerPort: 80
 
-
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: caresnap-service
-  namespace: caresnap  # Specify the namespace here
+  namespace: caresnap
 spec:
   selector:
     app: caresnap
