@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: caresnap-deployment
-  namespace: caresnap-namespace  # Specify the namespace here
+  namespace: caresnap  # Make sure this matches the correct namespace
   labels:
     app: caresnap
 spec:
@@ -20,6 +20,7 @@ spec:
         image: avasil08/caresnap:latest
         ports:
         - containerPort: 80
+
 
 ---
 apiVersion: v1
