@@ -4,5 +4,5 @@ metadata:
   name: caresnap-chatbot
 spec:
   destinations:
-  - namespace: caresnap-namespace  # Allow deployments to this namespace
+  - namespace: caresnap  # Allow deployments to this namespace
     server: https://kubernetes.default.svc  # Ensure this is your correct cluster
