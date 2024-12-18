@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: caresnap-container
-        image: avasil08/caresnap:latest
+        image: avasil08/caresnap-snapshot:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 4200
