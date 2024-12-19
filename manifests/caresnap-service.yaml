@@ -11,4 +11,4 @@ spec:
     - protocol: TCP
       port: 4200
       targetPort: 4200
-      nodePort: 3456 # Specify the NodePort to expose
+      nodePort: 32500 # Specify the NodePort to expose
