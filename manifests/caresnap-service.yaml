@@ -4,10 +4,11 @@ metadata:
   name: caresnap-service
   namespace: pschatbot
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: caresnap
   ports:
     - protocol: TCP
       port: 4200
       targetPort: 4200
+      nodePort: 3456 # Specify the NodePort to expose

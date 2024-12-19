@@ -21,12 +21,5 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 4200
-        volumeMounts:
-        - name: caresnap-pvc
-          mountPath: /app/docs
-      volumes:
-      - name: caresnap-pvc
-        persistentVolumeClaim:
-          claimName: caresnap-pvc
       imagePullSecrets:
       - name: regcred
