@@ -21,5 +21,14 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 4200
+      volumeMounts:
+          - name: pschatbot-pvc
+            mountPath: /app/docs
+
+      volumes:
+        - name: pschatbot-pvc
+          persistentVolumeClaim:
+            claimName: pschatbot-pvc
+
       imagePullSecrets:
       - name: regcred
