@@ -27,4 +27,11 @@ spec:
           service:
             name: caresnap-service
             port:
-              number: 4200
+              number: 80  # Exposing the frontend via Nginx
+      - path: /api  # Optional: Example for routing backend requests (if needed)
+        pathType: Prefix
+        backend:
+          service:
+            name: caresnap-service
+            port:
+              number: 5000  # Backend service port, replace if different

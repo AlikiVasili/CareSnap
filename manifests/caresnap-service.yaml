@@ -8,6 +8,9 @@ spec:
   selector:
     app: caresnap
   ports:
-    - protocol: TCP
-      port: 4200
-      targetPort: 4200
+     - name: frontend
+      port: 80              # Expose port 80 for Nginx (Frontend)
+      targetPort: 80         # Nginx port within the pod
+    - name: backend
+      port: 5000            # Port for the backend service (update based on your backend setup)
+      targetPort: 5000       # Backend service port
