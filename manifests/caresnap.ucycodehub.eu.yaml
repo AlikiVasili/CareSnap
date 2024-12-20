@@ -27,4 +27,4 @@ spec:
           service:
             name: caresnap-service
             port:
-              number: 4200
+              number: 80
