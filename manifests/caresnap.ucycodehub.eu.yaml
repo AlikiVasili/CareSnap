@@ -21,10 +21,24 @@ spec:
   - host: caresnap.ucycodehub.eu
     http:
       paths:
-      - path: /
+      - path: /frontend
         pathType: Prefix
         backend:
           service:
             name: caresnap-service
             port:
-              number: 80
+              number: 4200
+      - path: /backend
+        pathType: Prefix
+        backend:
+          service:
+            name: caresnap-backend-service
+            port:
+              number: 3000
+      - path: /model
+        pathType: Prefix
+        backend:
+          service:
+            name: caresnap-model-service
+            port:
+              number: 5000
