@@ -1,8 +1,0 @@
-apiVersion: argoproj.io/v1alpha1
-kind: AppProject
-metadata:
-  name: caresnap-chatbot
-spec:
-  destinations:
-  - namespace: caresnap  # Allow deployments to this namespace
-    server: https://kubernetes.default.svc  # Ensure this is your correct cluster
