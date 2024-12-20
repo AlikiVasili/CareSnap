@@ -8,7 +8,7 @@ spec:
   selector:
     app: caresnap
   ports:
-     - name: frontend
+    - name: frontend
       port: 80              # Expose port 80 for Nginx (Frontend)
       targetPort: 80         # Nginx port within the pod
     - name: backend
