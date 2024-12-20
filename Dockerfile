@@ -34,6 +34,6 @@ COPY --from=backend /app/chatbot-backend /usr/share/backend
 COPY --from=backend-server /app/chatbot-backend /usr/share/backend
 
 # Expose port for Nginx
-EXPOSE 4200
+EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
