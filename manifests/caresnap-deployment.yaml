@@ -22,13 +22,13 @@ spec:
         ports:
         - containerPort: 4200
       volumeMounts:
-          - name: pschatbot-pvc
+          - name: caresnap-pvc
             mountPath: /app/docs
 
       volumes:
-        - name: pschatbot-pvc
+        - name: caresnap-pvc
           persistentVolumeClaim:
-            claimName: pschatbot-pvc
+            claimName: caresnap-pvc
 
       imagePullSecrets:
       - name: regcred
