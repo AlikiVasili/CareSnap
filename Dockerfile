@@ -2,9 +2,12 @@
 FROM node:18 AS frontend-build
 WORKDIR /app
 COPY package*.json ./
+# Install dependencies and Angular CLI globally
 RUN npm install
+RUN npm install -g @angular/cli
 COPY . .
-RUN npm run build --prod
+# Build the Angular app
+RUN ng build --configuration=production --output-hashing=all
 
 # Step 2: Set up Python environment for the backend
 FROM python:3.10 AS backend
@@ -29,7 +32,9 @@ COPY chatbot-backend /app/chatbot-backend
 
 # Step 4: Create the final image using Nginx
 FROM nginx:alpine
-COPY --from=frontend-build /app /usr/share/nginx/html
+# Copy frontend build to Nginx
+COPY --from=frontend-build /app/dist/care-snap-project/browser /usr/share/nginx/html
+# Copy backend code (Python and Node.js backend) to a shared directory
 COPY --from=backend /app/chatbot-backend /usr/share/backend
 COPY --from=backend-server /app/chatbot-backend /usr/share/backend
 
