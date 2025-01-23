@@ -64,9 +64,9 @@ server.js:Acts as the central hub for handling API requests.Integrates with mode
 model_app.py:Classifies the user's query into intents (e.g., "get patient summary," "ask about NCPeH").Uses a pre-trained machine learning or NLP model for accuracy.Sends the classified intent back to server.js for appropriate action.
 
 ## 📄 Further Help
-- Angular CLI documentation: CLI Overview and Command Reference
-- Flask documentation (if relevant for model_app.py): Flask Docs
-- Node.js documentation (for server.js): Node.js Docs
+- Angular CLI documentation: [CLI Overview and Command Reference](https://angular.dev/cli)
+- Flask documentation (if relevant for model_app.py): [Flask Docs](https://flask.palletsprojects.com/en/stable/)
+- Node.js documentation (for server.js): [Node.js Docs](https://nodejs.org/docs/latest/api/)
 ## 🌍 Let’s Connect
 Feel free to explore the code and reach out if you have any questions or feedback!
 - 📫 Email: alikivasili@yourdomain.com
