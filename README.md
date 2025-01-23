@@ -1,4 +1,4 @@
-#CareSnap
+# CareSnap
 CareSnap is an AI-powered assistant designed to guide users through the NCPeH (National Contact Point for eHealth) project and answer questions related to it. Additionally, it provides a login feature that allows users to access their Patient Summary (PS) and e-Prescription. Once logged in, the assistant can answer personalized medical queries based on the available information in your PS.
 
 ## 🌟 Features
@@ -9,9 +9,8 @@ CareSnap is an AI-powered assistant designed to guide users through the NCPeH (N
 ### Frontend Setup
 This project was generated with Angular CLI version 18.1.4.
 - Clone the repository:
-bash
-Copy
-Edit
+Copy Edit
+```bash
 git clone https://github.com/username/CareSnap.git
 cd CareSnap
 - Install dependencies:
