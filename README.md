@@ -9,20 +9,18 @@ CareSnap is an AI-powered assistant designed to guide users through the NCPeH (N
 ### Frontend Setup
 This project was generated with Angular CLI version 18.1.4.
 - Clone the repository:
-Copy Edit
 ```bash
 git clone https://github.com/username/CareSnap.git
 cd CareSnap
+```
 - Install dependencies:
-bash
-Copy
-Edit
+```bash
 npm install
+```
 - Start the development server:
-bash
-Copy
-Edit
+```bash
 ng serve
+```
 Navigate to http://localhost:4200/ to view the application. The application will automatically reload if you make changes to the source files.
 
 ### Backend Setup
@@ -31,39 +29,36 @@ The backend services for CareSnap consist of two main components:
 - model_app.py: A Python-based service that performs intent classification for user queries using machine learning or NLP models.
 #### Steps to Set Up the Backend
 1) Navigate to the backend directory:
-bash
-Copy
-Edit
-cd backend
+```bash
+cd chatbot-backend
+```
 2) Install Python dependencies (for model_app.py):
-bash
-Copy
-Edit
+```bash
 pip install -r requirements.txt
+```
 3) Start model_app.py:
-bash
-Copy
-Edit
+```bash
 python model_app.py
+```
 This service listens for classification requests and responds with the detected intent.
 4) Install Node.js dependencies (for server.js):
-bash
-Copy
-Edit
+```bash
 npm install
+```
 5) Start server.js:
-bash
-Copy
-Edit
+```bash
 node server.js
+```
 The backend server will be available at http://localhost:5000/.
 
 ## 🔍 How It Works
 ### Frontend:
 The Angular-based frontend provides an interactive interface for users to:
-Login and authenticate securely.
-Interact with the AI assistant.
-View and query their Patient Summary.
+- Learn about the NCPeh and MyHealth@EU project
+- Login and authenticate securely.
+- Interact with the AI assistant.
+- View and query their Patient Summary.
+- Get answers to questions related to the NCPeh and 
 ### Backend:
 server.js:Acts as the central hub for handling API requests.Integrates with model_app.py for intent classification.Manages user authentication and data retrieval from the database or external APIs (e.g., NCPeH API).
 model_app.py:Classifies the user's query into intents (e.g., "get patient summary," "ask about NCPeH").Uses a pre-trained machine learning or NLP model for accuracy.Sends the classified intent back to server.js for appropriate action.
