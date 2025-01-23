@@ -1,32 +1,80 @@
-<<<<<<< HEAD
-# CareSnapProject
+#CareSnap
+CareSnap is an AI-powered assistant designed to guide users through the NCPeH (National Contact Point for eHealth) project and answer questions related to it. Additionally, it provides a login feature that allows users to access their Patient Summary (PS) and e-Prescription. Once logged in, the assistant can answer personalized medical queries based on the available information in your PS.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.4.
+## 🌟 Features
+- AI Assistant: Guides users through the NCPeH project and answers project-related questions.
+- Personalized Medical Information: Access and query your Patient Summary and e-Prescription securely.
+- Interactive and User-Friendly: Simple interface with powerful backend support.
+## 🚀 Getting Started
+### Frontend Setup
+This project was generated with Angular CLI version 18.1.4.
+- Clone the repository:
+bash
+Copy
+Edit
+git clone https://github.com/username/CareSnap.git
+cd CareSnap
+- Install dependencies:
+bash
+Copy
+Edit
+npm install
+- Start the development server:
+bash
+Copy
+Edit
+ng serve
+Navigate to http://localhost:4200/ to view the application. The application will automatically reload if you make changes to the source files.
 
-## Development server
+### Backend Setup
+The backend services for CareSnap consist of two main components:
+- server.js: The primary backend service that handles requests, routes, and integrations with the AI model and database.
+- model_app.py: A Python-based service that performs intent classification for user queries using machine learning or NLP models.
+#### Steps to Set Up the Backend
+1) Navigate to the backend directory:
+bash
+Copy
+Edit
+cd backend
+2) Install Python dependencies (for model_app.py):
+bash
+Copy
+Edit
+pip install -r requirements.txt
+3) Start model_app.py:
+bash
+Copy
+Edit
+python model_app.py
+This service listens for classification requests and responds with the detected intent.
+4) Install Node.js dependencies (for server.js):
+bash
+Copy
+Edit
+npm install
+5) Start server.js:
+bash
+Copy
+Edit
+node server.js
+The backend server will be available at http://localhost:5000/.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🔍 How It Works
+### Frontend:
+The Angular-based frontend provides an interactive interface for users to:
+Login and authenticate securely.
+Interact with the AI assistant.
+View and query their Patient Summary.
+### Backend:
+server.js:Acts as the central hub for handling API requests.Integrates with model_app.py for intent classification.Manages user authentication and data retrieval from the database or external APIs (e.g., NCPeH API).
+model_app.py:Classifies the user's query into intents (e.g., "get patient summary," "ask about NCPeH").Uses a pre-trained machine learning or NLP model for accuracy.Sends the classified intent back to server.js for appropriate action.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-=======
-# CareSnap
-An AI assistant that guide the user through the NCPeH project and answer questions related to it. Also it includes an option to login and access your Patient Summary. The AI assistant then can answer questions related to your personal medical information available on your PS and e-Prescription
->>>>>>> e47cd48a83aea4609aef3b5b224a91e54a6309e2
+## 📄 Further Help
+- Angular CLI documentation: CLI Overview and Command Reference
+- Flask documentation (if relevant for model_app.py): Flask Docs
+- Node.js documentation (for server.js): Node.js Docs
+## 🌍 Let’s Connect
+Feel free to explore the code and reach out if you have any questions or feedback!
+- 📫 Email: alikivasili@yourdomain.com
+- 💼 LinkedIn: Aliki Vasili
+- 📝 GitHub: github.com/alikivasili
